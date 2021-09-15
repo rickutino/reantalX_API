@@ -8,10 +8,14 @@
       "type": "node",
       "request": "attach",
       "protocol": "inspector",
+      "port": 9229,
       "restart": true,
       "name": "Debag",
       "skipFiles": ["<node_internals>/**"],
-      "outFiles": ["${workspaceFolder}/**/*.js"]
+      "outFiles": ["${workspaceFolder}/**/*.js"],
+      "sourceMapPathOverrides": {
+        "<WORKDIR>/*": "${workspaceRoot}/*"
+      }
     }
   ]
 }
