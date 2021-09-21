@@ -1,9 +1,9 @@
-interface ICreateUserTDO {
+interface ICreateUserDTO {
   name: string;
   username: string;
   password: string;
   email: string;
-  driver_licence: string;
+  driver_license: string;
 }
 
-export { ICreateUserTDO };
+export { ICreateUserDTO };
