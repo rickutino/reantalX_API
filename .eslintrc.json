@@ -22,6 +22,7 @@
     ],
     "rules": {
         "camelcase": "off",
+        "prettier/prettier": "error",
         "import/no-unresolved": "error",
         "@typescript-eslint/naming-convention": [
         "error",
@@ -58,9 +59,8 @@
         ],
         "import/no-extraneous-dependencies": [
         "error",
-        { "devDependencies": ["**/*.spec.js"] }
-        ],
-        "prettier/prettier": "error"
+        { "devDependencies": ["**/*.spec.ts", "jest.config.ts"] }
+        ]
     },
     "settings": {
       "import/resolver": {
