@@ -1,5 +1,6 @@
 {
   "cSpell.words": [
     "openapi"
-  ]
+  ],
+  "jest.jestCommandLine": "yarn test"
 }
