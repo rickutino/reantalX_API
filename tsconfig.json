@@ -7,6 +7,9 @@
     "rootDir": "./",
     "baseUrl": "./src",
     "paths": {
+      "@__tests__/*": [
+        "__tests__/*"
+      ],
       "@modules/*": [
         "modules/*"
       ],
