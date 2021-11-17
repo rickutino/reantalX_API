@@ -1,8 +1,6 @@
-import "reflect-metadata";
+import { CategoriesRepositoryInMemory } from "@__tests__/modules/cars/repositories/in-memory/CategoriesRepositoryInMemory";
 import { CreateCategoryUseCase } from "@modules/cars/useCases/createCategory/CreateCategoryUseCase";
 import { AppError } from "@shared/errors/AppError";
-
-import { CategoriesRepositoryInMemory } from "../../repositories/in-memory/CategoriesRepositoryInMemory";
 
 let createCategoryUseCase: CreateCategoryUseCase;
 let categoriesRepositoryInMemory: CategoriesRepositoryInMemory;
