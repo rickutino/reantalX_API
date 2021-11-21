@@ -2,17 +2,17 @@ import { CarsRepositoryInMemory } from "@__tests__/modules/cars/repositories/in-
 import { CreateCarUseCase } from "@modules/cars/useCases/createCars/CreateCarUseCase";
 import { AppError } from "@shared/errors/AppError";
 
-let createCarsUseCase: CreateCarUseCase;
+let createCarUseCase: CreateCarUseCase;
 let carsRepositoryInMemory: CarsRepositoryInMemory;
 
 describe("Create Car", () => {
   beforeEach(() => {
     carsRepositoryInMemory = new CarsRepositoryInMemory();
-    createCarsUseCase = new CreateCarUseCase(carsRepositoryInMemory);
+    createCarUseCase = new CreateCarUseCase(carsRepositoryInMemory);
   });
 
   it("should be able to create a new car", async () => {
-    const car = await createCarsUseCase.execute({
+    const car = await createCarUseCase.execute({
       name: "Tesla",
       description: "description Car",
       daily_rate: 210,
@@ -27,7 +27,7 @@ describe("Create Car", () => {
 
   it("should not be able to create a car with exists license plate", () => {
     expect(async () => {
-      await createCarsUseCase.execute({
+      await createCarUseCase.execute({
         name: "Car1",
         description: "description Car",
         daily_rate: 210,
@@ -37,7 +37,7 @@ describe("Create Car", () => {
         category_id: "category",
       });
 
-      await createCarsUseCase.execute({
+      await createCarUseCase.execute({
         name: "Car2",
         description: "description Car",
         daily_rate: 210,
@@ -50,7 +50,7 @@ describe("Create Car", () => {
   });
 
   it("should be able to create a car with available true by default", async () => {
-    const car = await createCarsUseCase.execute({
+    const car = await createCarUseCase.execute({
       name: "Car 3",
       description: "description Car",
       daily_rate: 210,
