@@ -8,13 +8,16 @@
       "type": "node",
       "request": "attach",
       "protocol": "inspector",
+      "name": "Docker: Attach to Node",
+      "remoteRoot": "/usr/app/",
       "port": 9229,
       "restart": true,
-      "name": "Debag",
       "skipFiles": ["<node_internals>/**"],
       "outFiles": ["${workspaceFolder}/**/*.js"],
+      "address": "localhost",
       "sourceMapPathOverrides": {
-        "<WORKDIR>/*": "${workspaceRoot}/*"
+        //Precisa especificar o workdir definido no Dockerfile
+        "/usr/app/*": "${workspaceRoot}/*" //
       }
     }
   ]
