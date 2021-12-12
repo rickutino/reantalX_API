@@ -8,7 +8,6 @@ class CreateCarSpecificationController {
     const { id } = request.params;
     const { specifications_id } = request.body;
 
-    console.log(id, request.body, "controller", specifications_id);
     const createCarSpecificationUseCase = container.resolve(
       CreateCarSpecificationUseCase
     );
