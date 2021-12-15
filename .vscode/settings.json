@@ -1,7 +1,14 @@
 {
   "cSpell.words": [
+    "Após",
+    "cancelar",
     "dtos",
-    "openapi"
+    "ligacao",
+    "mesmo",
+    "openapi",
+    "rodar",
+    "teste",
+    "utilizar"
   ],
   "jest.jestCommandLine": "yarn test"
 }
