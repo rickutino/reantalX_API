@@ -36,7 +36,7 @@ describe("Create Category Controller", () => {
       password: "admin",
     });
 
-    const { token } = responseToken.body.token;
+    const { token } = responseToken.body;
 
     const response = await request(app)
       .post("/categories")
@@ -47,5 +47,24 @@ describe("Create Category Controller", () => {
       .set({ Authorization: `Bearer ${token}` });
 
     expect(response.status).toBe(201);
+  });
+
+  it("should not be able to create a new category with name exists", async () => {
+    const responseToken = await request(app).post("/sessions").send({
+      email: "admin@rentalx.co.jp",
+      password: "admin",
+    });
+
+    const { token } = responseToken.body;
+
+    const response = await request(app)
+      .post("/categories")
+      .send({
+        name: "Category Supertest",
+        description: "Category Supertest",
+      })
+      .set({ Authorization: `Bearer ${token}` });
+
+    expect(response.status).toBe(400);
   });
 });
