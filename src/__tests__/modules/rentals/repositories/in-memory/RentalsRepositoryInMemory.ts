@@ -31,12 +31,17 @@ class RentalsRepositoryInMemory implements IRentalsRepository {
         (!rental.end_date || rental.end_date === null)
     );
   }
+
   async findOpenRentalByUser(user_id: string): Promise<Rental> {
     return this.rentals.find(
       (rental) =>
         rental.user_id === user_id &&
         (!rental.end_date || rental.end_date === null)
     );
+  }
+
+  findById(id: string): Promise<Rental> {
+    return this.rentals.find((rental) => rental.id === id);
   }
 }
 
