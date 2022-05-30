@@ -13,6 +13,9 @@
       "post": {
         "tags": ["Category"],
         "summary": "Create a category",
+        "security": [
+          { "bearerAuth": []}
+        ],
         "description": "Create a new category",
         "requestBody": {
           "content": {
@@ -167,6 +170,15 @@
         "description": {
           "type": "string"
         }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "beanerAuth": {
+        "type": "http",
+        "schema": "bearer",
+        "bearerFormat": "JWT"
       }
     }
   }
