@@ -97,8 +97,28 @@ var RentalsRepository = /** @class */ (function () {
         });
     };
     RentalsRepository.prototype.findById = function (id) {
-        var rental = this.repository.findOne(id);
-        return rental;
+        return __awaiter(this, void 0, void 0, function () {
+            var rental;
+            return __generator(this, function (_a) {
+                rental = this.repository.findOne(id);
+                return [2 /*return*/, rental];
+            });
+        });
+    };
+    RentalsRepository.prototype.findByUser = function (user_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            var rentals;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0: return [4 /*yield*/, this.repository.find({
+                            user_id: user_id,
+                        })];
+                    case 1:
+                        rentals = _a.sent();
+                        return [2 /*return*/, rentals];
+                }
+            });
+        });
     };
     return RentalsRepository;
 }());

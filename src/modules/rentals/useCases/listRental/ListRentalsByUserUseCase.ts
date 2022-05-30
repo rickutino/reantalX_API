@@ -1,6 +1,6 @@
 import { inject, injectable } from "tsyringe";
-import { Rental } from "../infra/typeorm/entities/Rental";
-import { IRentalsRepository } from "../repositories/IRentalsRepository";
+import { Rental } from "../../infra/typeorm/entities/Rental";
+import { IRentalsRepository } from "../../repositories/IRentalsRepository";
 
 @injectable()
 class ListRentalsByUserUseCase {
