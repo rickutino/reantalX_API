@@ -80,7 +80,18 @@ var RentalsRepositoryInMemory = /** @class */ (function () {
         });
     };
     RentalsRepositoryInMemory.prototype.findById = function (id) {
-        return this.rentals.find(function (rental) { return rental.id === id; });
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.rentals.find(function (rental) { return rental.id === id; })];
+            });
+        });
+    };
+    RentalsRepositoryInMemory.prototype.findByUser = function (user_id) {
+        return __awaiter(this, void 0, void 0, function () {
+            return __generator(this, function (_a) {
+                return [2 /*return*/, this.rentals.filter(function (rental) { return rental.user_id === user_id; })];
+            });
+        });
     };
     return RentalsRepositoryInMemory;
 }());

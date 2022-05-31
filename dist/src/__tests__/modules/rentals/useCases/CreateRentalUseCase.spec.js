@@ -59,15 +59,26 @@ describe("Create Rental", function () {
         createRentalUseCase = new CreateRentalUseCase_1.CreateRentalUseCase(rentalsRepositoryInMemory, dayjsDateProvider, carsRepositoryInMemory);
     });
     it("should be able to create a new rental", function () { return __awaiter(void 0, void 0, void 0, function () {
-        var rental;
+        var car, rental;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, createRentalUseCase.execute({
-                        user_id: uuid_1.v4(),
-                        car_id: uuid_1.v4(),
-                        expected_return_date: dayAdd24Hours,
+                case 0: return [4 /*yield*/, carsRepositoryInMemory.create({
+                        name: "Test",
+                        description: "Car Test",
+                        daily_rate: 4000,
+                        license_plate: "test",
+                        fine_amount: 800,
+                        category_id: "123456",
+                        brand: "brand"
                     })];
                 case 1:
+                    car = _a.sent();
+                    return [4 /*yield*/, createRentalUseCase.execute({
+                            user_id: uuid_1.v4(),
+                            car_id: car.id,
+                            expected_return_date: dayAdd24Hours,
+                        })];
+                case 2:
                     rental = _a.sent();
                     expect(rental).toHaveProperty("id");
                     expect(rental).toHaveProperty("start_date");
