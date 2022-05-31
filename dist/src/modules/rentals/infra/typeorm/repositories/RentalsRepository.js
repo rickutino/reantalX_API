@@ -111,7 +111,8 @@ var RentalsRepository = /** @class */ (function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, this.repository.find({
-                            user_id: user_id,
+                            where: { user_id: user_id },
+                            relations: ["car"],
                         })];
                     case 1:
                         rentals = _a.sent();

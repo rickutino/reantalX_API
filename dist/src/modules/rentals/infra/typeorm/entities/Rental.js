@@ -10,6 +10,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rental = void 0;
+var Car_1 = require("@modules/cars/infra/typeorm/entities/Car");
 var typeorm_1 = require("typeorm");
 var uuid_1 = require("uuid");
 var Rental = /** @class */ (function () {
@@ -23,6 +24,8 @@ var Rental = /** @class */ (function () {
         __metadata("design:type", String)
     ], Rental.prototype, "id", void 0);
     __decorate([
+        typeorm_1.ManyToOne(function () { return Car_1.Car; }),
+        typeorm_1.JoinColumn({ name: "car_id" }),
         typeorm_1.Column(),
         __metadata("design:type", String)
     ], Rental.prototype, "car_id", void 0);
