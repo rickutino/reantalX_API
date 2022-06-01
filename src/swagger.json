@@ -282,7 +282,7 @@
       }
     },
     "Car": {
-      "types": "object",
+      "type": "object",
       "properties": {
         "name": {
           "type": "string"
@@ -310,9 +310,9 @@
   },
   "components": {
     "securitySchemes": {
-      "beanerAuth": {
+      "bearerAuth": {
         "type": "http",
-        "schema": "bearer",
+        "scheme": "bearer",
         "bearerFormat": "JWT"
       }
     }
