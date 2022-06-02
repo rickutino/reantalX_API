@@ -49,50 +49,48 @@ describe("Create Rental", () => {
 
   it("should not be able to create a new rental if there is another open to the same user", async () => {
     const user_id = uuidV4();
+    await createRentalUseCase.execute({
+      user_id,
+      car_id: uuidV4(),
+      expected_return_date: dayAdd24Hours,
+    });
 
-    expect(async () => {
-      await createRentalUseCase.execute({
+    await expect(
+      createRentalUseCase.execute({
         user_id,
         car_id: uuidV4(),
         expected_return_date: dayAdd24Hours,
-      });
-
-      await createRentalUseCase.execute({
-        user_id,
-        car_id: uuidV4(),
-        expected_return_date: dayAdd24Hours,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError("There's a rental in progress for user!"));
   });
 
   it("should not be able to create a new rental if there is another open to the same car", async () => {
     const car_id = uuidV4();
+    await createRentalUseCase.execute({
+      user_id: uuidV4(),
+      car_id,
+      expected_return_date: dayAdd24Hours,
+    });
 
-    expect(async () => {
-      await createRentalUseCase.execute({
+    await expect(
+      createRentalUseCase.execute({
         user_id: uuidV4(),
         car_id,
         expected_return_date: dayAdd24Hours,
-      });
-
-      await createRentalUseCase.execute({
-        user_id: uuidV4(),
-        car_id,
-        expected_return_date: dayAdd24Hours,
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError("Car is unavailable"));
   });
 
   it("should not be able to create a new rental with invalid return time", async () => {
     const user_id = uuidV4();
     const car_id = uuidV4();
 
-    expect(async () => {
-      await createRentalUseCase.execute({
+    await expect(
+      createRentalUseCase.execute({
         user_id,
         car_id,
         expected_return_date: dayjs().toDate(),
-      });
-    }).rejects.toBeInstanceOf(AppError);
+      })
+    ).rejects.toEqual(new AppError("Invalid return time!"));
   });
 });
