@@ -49,11 +49,12 @@ describe("Create Rental", () => {
 
   it("should not be able to create a new rental if there is another open to the same user", async () => {
     const user_id = uuidV4();
-    await createRentalUseCase.execute({
+
+    await rentalsRepositoryInMemory.create({
       user_id,
       car_id: uuidV4(),
       expected_return_date: dayAdd24Hours,
-    });
+    })
 
     await expect(
       createRentalUseCase.execute({
@@ -66,11 +67,11 @@ describe("Create Rental", () => {
 
   it("should not be able to create a new rental if there is another open to the same car", async () => {
     const car_id = uuidV4();
-    await createRentalUseCase.execute({
+    await rentalsRepositoryInMemory.create({
       user_id: uuidV4(),
       car_id,
       expected_return_date: dayAdd24Hours,
-    });
+    })
 
     await expect(
       createRentalUseCase.execute({
