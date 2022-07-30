@@ -1,4 +1,4 @@
-import { AuthenticateUserUseCase } from "@modules/accounts/authenticateUser/AuthenticateUserUseCase";
+import { AuthenticateUserUseCase } from "@modules/accounts/useCases/authenticateUser/AuthenticateUserUseCase";
 import { ICreateUserDTO } from "@modules/accounts/dtos/ICreateUserDTO";
 import { CreateUserUseCase } from "@modules/accounts/useCases/createUser/CreateUserUseCase";
 import { AppError } from "@shared/errors/AppError";
