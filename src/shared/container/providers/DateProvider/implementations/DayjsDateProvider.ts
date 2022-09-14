@@ -23,7 +23,7 @@ class DayjsDateProvider implements IDateProvider {
     return dayjs().toDate();
   }
 
-  compareInDays(start_date: Date, end_date: Date) {
+  compareInDays(start_date: Date, end_date: Date): number {
     const start_date_utc = this.convertToUTC(start_date);
     const end_date_utc = this.convertToUTC(end_date);
 

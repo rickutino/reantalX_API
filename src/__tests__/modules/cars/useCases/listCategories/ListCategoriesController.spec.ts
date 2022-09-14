@@ -47,7 +47,6 @@ describe("List Categories Controller", () => {
       .set({ Authorization: `Bearer ${refresh_token}` });
 
     const response = await request(app).get("/categories");
-    console.log(response.body[0]);
 
     expect(response.status).toBe(200);
     expect(response.body.length).toBe(1);

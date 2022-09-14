@@ -17,6 +17,7 @@ describe("Authenticate User", () => {
   beforeEach(() => {
     usersRepositoryInMemory = new UsersRepositoryInMemory();
     userTokensRepositoryInMemory = new UsersTokensRepositoryInMemory();
+    dateProvider = new DayjsDateProvider();
     authenticateUserUseCase = new AuthenticateUserUseCase(
       usersRepositoryInMemory,
       userTokensRepositoryInMemory,
@@ -43,7 +44,7 @@ describe("Authenticate User", () => {
     expect(result).toHaveProperty("token");
   });
 
-  it("should not be able to authenticate an nonexistent user", async () => {
+  it("should not be able to authenticate an non existent user", async () => {
     await expect(
       authenticateUserUseCase.execute({
         email: "false@email.com",
